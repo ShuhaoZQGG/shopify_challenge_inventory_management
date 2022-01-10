@@ -3,4 +3,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  root 'pages#index'
+
+  namespace :api do
+    namespace :v1 do
+      resources :inventories, param: :id
+      resources :warehouses, only: [:create, :destroy]
+      resources :groups, only: [:create, :destroy]
+    end
+  end
+
+  get '*path', to: 'pages#index', via: :all
 end
