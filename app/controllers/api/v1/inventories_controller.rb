@@ -1,6 +1,7 @@
 module Api
   module V1
     class InventoriesController < ApplicationController
+      skip_before_action :verify_authenticity_token
       # GET /api/v1/inventories
       def index
         inventories = Inventory.all
@@ -20,7 +21,7 @@ module Api
         inventory = Inventory.new(inventory_params)
 
         if inventory.save
-          render json: InventoriesController.new(inventory).serializable_hash.to_json
+          render json: InventorySerializer.new(inventory).serializable_hash.to_json
         else
           render json: { error: inventory.errors.messages }, status: 422
         end
@@ -49,9 +50,9 @@ module Api
         end
       end
 
-      private
+      # private
       def inventory_params
-        params.erquire(:inventory).permit(:name, :image_url, :price)
+        params.require(:inventory).permit(:name, :description, :image_url, :quantity, :price, :warehouse_id, :group_id)
       end
     end
   end

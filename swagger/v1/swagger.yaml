@@ -1,0 +1,69 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/inventories":
+    get:
+      summary: list inventories
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create inventory
+      responses:
+        '200':
+          description: successful
+  "/api/v1/inventories/new":
+    get:
+      summary: new inventory
+      responses:
+        '200':
+          description: successful
+  "/api/v1/inventories/{id}/edit":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: edit inventory
+      responses:
+        '200':
+          description: successful
+  "/api/v1/inventories/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show inventory
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update inventory
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update inventory
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete inventory
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
