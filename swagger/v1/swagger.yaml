@@ -4,6 +4,64 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/v1/groups":
+    get:
+      summary: list groups
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create group
+      responses:
+        '200':
+          description: successful
+  "/api/v1/groups/new":
+    get:
+      summary: new group
+      responses:
+        '200':
+          description: successful
+  "/api/v1/groups/{id}/edit":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: edit group
+      responses:
+        '200':
+          description: successful
+  "/api/v1/groups/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show group
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update group
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update group
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete group
+      responses:
+        '200':
+          description: successful
   "/api/v1/inventories":
     get:
       summary: list inventories

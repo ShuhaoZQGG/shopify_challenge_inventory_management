@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :inventories, param: :id
-      resources :warehouses, only: [:create, :destroy]
-      resources :groups, only: [:create, :destroy]
+      resources :warehouses, param: :id
+      resources :groups, param: :id
     end
   end
 
