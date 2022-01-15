@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   end
 
   get '*path', to: 'pages#index', via: :all
+  resources :inventories
+
 end

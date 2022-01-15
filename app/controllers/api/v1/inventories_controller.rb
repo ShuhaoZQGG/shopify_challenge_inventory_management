@@ -7,6 +7,7 @@ module Api
         inventories = Inventory.all
 
         render json: InventorySerializer.new(inventories).serializable_hash.to_json
+        # MVC @inventories = Inventory.all
       end
 
       # GET /api/v1/inventories/:id
