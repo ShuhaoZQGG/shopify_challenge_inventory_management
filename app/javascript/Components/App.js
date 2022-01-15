@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar from "./Navbar";
+import RoutesManagement from "./RoutesManagement";
 const App = () => {
   return (
     <div>
       <Navbar/>
-      <h1>Wtf it duplicates</h1>
-      <h1>Hello World</h1>
+      <RoutesManagement/>
     </div>
   )
 }
