@@ -19,12 +19,21 @@ const InventoryList = () => {
     })
   }, [inventories.length]);
 
-  const handleSubmit = (e) => {
+  const handleDelete = (e) => {
     e.preventDefault();
+    console.log(e.target.parentElement.id[e.target.parentElement.id.length-1]);
+    const id = e.target.parentElement.id[e.target.parentElement.id.length-1]
+    axios.delete(`/api/v1/inventories/${id}`)
+         .then((res) => {
+           console.log(res);
+         })
+         .catch((err) => {
+           console.log(err);
+         })
   }
   const inventoryList = inventories && inventories.map((inventory) => {
     return (
-      <ul  key={inventory.id}>
+      <ul id={`inventory_${inventory.id}`} key={inventory.id}>
         <li>
           {inventory.attributes.name}
         </li>
@@ -38,6 +47,8 @@ const InventoryList = () => {
         <li>
           quantity: {inventory.attributes.quantity}
         </li>
+        <button onClick={handleDelete}>Delete</button>
+        <button>Update</button>
       </ul>
     )
   })

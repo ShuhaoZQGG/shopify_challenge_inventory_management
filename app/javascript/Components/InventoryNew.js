@@ -99,6 +99,7 @@ const InventoryNew = () => {
         <option></option>
         {warehouseIdList} 
         </select>
+        <label htmlFor="group_id">Choose the Group</label>
         <select onChange={ handleChangeId } name="group_id"
         > 
         <option></option>
