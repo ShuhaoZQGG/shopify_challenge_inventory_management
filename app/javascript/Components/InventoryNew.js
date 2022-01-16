@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const InventoryNew = () => {
@@ -8,9 +8,49 @@ const InventoryNew = () => {
       "name": "",
       "price": 0,
       "image_url": "",
-      "warehouse": 0
+      "warehouse_id": 0,
+      "group_id": 0
     }
   )
+  
+  const [warehouses, setWarehouses] = useState([]);
+
+  const [groups, setGroups] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/v1/warehouses") 
+    .then((res) => {
+       setWarehouses(res.data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+    axios.get("/api/v1/groups") 
+    .then((res) => {
+      setGroups(res.data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+  }, [warehouses.length, groups.length]);
+
+  const warehouseIdList = warehouses.map((warehouse) => {
+    return (
+      <option key={warehouse.id} value={warehouse.id}>
+        {warehouse.id}: {warehouse.attributes.name}
+      </option>
+    )
+  })
+
+  const groupIdList = groups.map((group) => {
+    return (
+      <option key={group.id} value={group.id}>
+        {group.id}: {group.attributes.name}
+      </option>
+    )
+  })
 
   const handleChange = (e) => {
     const newInventory = {...inventory};
@@ -18,9 +58,16 @@ const InventoryNew = () => {
     setInventory(newInventory);
   }
 
+  const handleChangeId = (e) => {
+    const newInventory = {...inventory};
+    newInventory[e.target.name] = e.target.value;
+    setInventory(newInventory);
+  }
+  
   const handleSubmit = (e) => {
-    e.preventDefault();
-     axios.post('/api/v1/inventories')
+     e.preventDefault();
+     console.log(inventory);
+     axios.post('/api/v1/inventories', inventory)
           .then((res) => {
             console.log(res)
             setInventory(
@@ -28,7 +75,8 @@ const InventoryNew = () => {
                 "name": "",
                 "price": 0,
                 "image_url": "",
-                "warehouse": 0
+                "warehouse_id": 0,
+                "group_id": 0
               }
             )
           })
@@ -42,12 +90,20 @@ const InventoryNew = () => {
         <label htmlFor="name">Inventory Name</label>
         <input id="inventory-name" type="text" name="name" onChange={ handleChange }></input>
         <label htmlFor="price">Inventory Price</label>
-        <input id="inventory-price" type="number" name="price" onChange={ handleChange }></input>
-        <label htmlFor="image-url">Inventory Image_URL</label>
-        <input id="inventory-image-url" name="image-url" onChange={ handleChange }></input>
-        <label for="warehouse">Choose the Warehouse</label>
-        <select name="warehouse"
-        ></select>
+        <input id="inventory-price" type="number" step="0.01" name="price" onChange={ handleChange }></input>
+        <label htmlFor="image_url">Inventory Image_URL</label>
+        <input id="inventory-image-url" name="image_url" onChange={ handleChange }></input>
+        <label htmlFor="warehouse_id">Choose the Warehouse</label>
+        <select onChange={ handleChangeId } name="warehouse_id"
+        > 
+        <option></option>
+        {warehouseIdList} 
+        </select>
+        <select onChange={ handleChangeId } name="group_id"
+        > 
+        <option></option>
+        {groupIdList} 
+        </select>
         <button>Create a new inventory</button>
       </form>
     </div>
