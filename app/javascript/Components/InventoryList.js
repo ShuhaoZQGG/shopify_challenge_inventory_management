@@ -3,6 +3,7 @@ import axios from "axios";
 import '../Styles/InventoryList.css'
 import { useState, useEffect } from "react";
 import InventoryNew from "./InventoryNew";
+import InventoryUpdate from "./InventoryUpdate";
 import { Link } from "react-router-dom";
 
 const InventoryList = () => {
@@ -48,14 +49,19 @@ const InventoryList = () => {
           quantity: {inventory.attributes.quantity}
         </li>
         <button onClick={handleDelete}>Delete</button>
-        <button>Update</button>
+        <button>
+        <Link to="/inventory/update" 
+              element={<InventoryUpdate/> }
+              state={{ inventory }}
+              >Update</Link>
+        </button>
       </ul>
     )
   })
   return (
     <div>
       <h1>Inventory</h1>
-      <Link to="/inventory/new" element={InventoryNew}>Create a  new Inventory</Link>
+      <Link to="/inventory/new" element={<InventoryNew/>}>Create a  new Inventory</Link>
       <div>
         {inventoryList}
       </div>
