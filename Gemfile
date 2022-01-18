@@ -5,7 +5,7 @@ ruby "2.7.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.1"
-
+gem 'rspec'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -53,13 +53,6 @@ gem 'webpacker', '~> 4.3.x'
 gem 'jsonapi-serializer'
 
 gem 'rswag', git: 'https://github.com/rswag/rswag.git', branch: 'master'
-gem 'rswag-api'
-gem 'rswag-ui'
-
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'rswag-specs'
-end
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import '../Styles/InventoryList.css'
 import { useState, useEffect } from "react";
+import WarehouseNew from "./WarehouseNew";
+import { Link } from "react-router-dom";
 
 const WarehouseList = () => {
   const [warehouses, setWarehouses] = useState([])
@@ -32,6 +34,7 @@ const WarehouseList = () => {
   return (
     <div>
       <h1>Warehouses</h1>
+      <Link to="/warehouse/new" element={<WarehouseNew/>}>Create a new Warehouse</Link>
       <div>
         {WarehouseList}
       </div>

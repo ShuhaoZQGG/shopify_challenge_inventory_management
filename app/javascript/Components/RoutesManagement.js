@@ -5,6 +5,7 @@ import GroupList  from "./GroupList.js";
 import WarehouseList from "./WarehouseList.js";
 import InventoryNew from "./InventoryNew.js";
 import InventoryUpdate from "./InventoryUpdate.js";
+import WarehouseNew from "./WarehouseNew.js";
 
 const RoutesManagement = () => {
   return (
@@ -15,6 +16,7 @@ const RoutesManagement = () => {
         <Route path='/groups' element={ <GroupList/> }>Groups</Route>
         <Route path='/inventory/new' element={ <InventoryNew/> }></Route>
         <Route path='/inventory/update' element={ <InventoryUpdate/> }></Route>
+        <Route path='/warehouse/new' element={ <WarehouseNew/> }></Route>
       </Routes>
     </div>
   )
