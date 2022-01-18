@@ -4,7 +4,7 @@ module Api
       skip_before_action :verify_authenticity_token
       # GET /api/v1/inventories
       def index
-        inventories = Inventory.all
+        inventories = Inventory.all.order(:id)
 
         render json: InventorySerializer.new(inventories).serializable_hash.to_json
         # MVC @inventories = Inventory.all

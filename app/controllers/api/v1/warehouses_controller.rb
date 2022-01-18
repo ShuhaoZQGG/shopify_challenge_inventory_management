@@ -4,7 +4,7 @@ module Api
       skip_before_action :verify_authenticity_token
       # GET /api/v1/warehouses
       def index
-        warehouses = Warehouse.all
+        warehouses = Warehouse.all.order(:id)
 
         render json: WarehouseSerializer.new(warehouses).serializable_hash.to_json
       end

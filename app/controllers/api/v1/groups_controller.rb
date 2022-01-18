@@ -4,7 +4,7 @@ module Api
       skip_before_action :verify_authenticity_token
       # GET /api/v1/groups
       def index
-        groups = Group.all
+        groups = Group.all.order(:id)
 
         render json: GroupSerializer.new(groups).serializable_hash.to_json
       end

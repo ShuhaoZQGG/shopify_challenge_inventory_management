@@ -12,6 +12,7 @@ const InventoryUpdate = (props) => {
       "name": originalInventory.attributes.name,
       "price": originalInventory.attributes.price,
       "image_url": originalInventory.attributes.image_url,
+      "quantity": originalInventory.attributes.quantity,
       "warehouse_id": originalInventory.attributes.warehouse_id,
       "group_id": originalInventory.attributes.group_id
     }
@@ -116,6 +117,8 @@ const InventoryUpdate = (props) => {
         <input id="inventory-name" type="text" name="name" value={inventory.name} onChange={ handleChange }></input>
         <label htmlFor="price" >Inventory Price</label>
         <input id="inventory-price" type="number" step="0.01" name="price" value={inventory.price} onChange={ handleChange }></input>
+        <label htmlFor="quantity" >Inventory Quantity</label>
+        <input id="inventory-quantity" type="number" name="quantity" value={inventory.quantity} onChange={ handleChange }></input>
         <label htmlFor="image_url" >Inventory Image_URL</label>
         <input id="inventory-image-url" name="image_url" onChange={ handleChange } value={inventory.image_url}></input>
         <label htmlFor="warehouse_id">Choose the Warehouse</label>

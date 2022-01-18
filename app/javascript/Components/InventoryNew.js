@@ -8,6 +8,7 @@ const InventoryNew = () => {
       "name": "",
       "price": 0,
       "image_url": "",
+      "quantity": 0,
       "warehouse_id": 0,
       "group_id": 0
     }
@@ -75,6 +76,7 @@ const InventoryNew = () => {
                 "name": "",
                 "price": 0,
                 "image_url": "",
+                "quantity": 0,
                 "warehouse_id": 0,
                 "group_id": 0
               }
@@ -91,6 +93,8 @@ const InventoryNew = () => {
         <input id="inventory-name" type="text" name="name" onChange={ handleChange }></input>
         <label htmlFor="price">Inventory Price</label>
         <input id="inventory-price" type="number" step="0.01" name="price" onChange={ handleChange }></input>
+        <label htmlFor="quantity">Inventory Quantity</label>
+        <input id="inventory-quantity" type="number" name="quantity" onChange={ handleChange }></input>
         <label htmlFor="image_url">Inventory Image_URL</label>
         <input id="inventory-image-url" name="image_url" onChange={ handleChange }></input>
         <label htmlFor="warehouse_id">Choose the Warehouse</label>
