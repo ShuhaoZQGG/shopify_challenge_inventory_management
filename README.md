@@ -1,26 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version: 2.7.0
 
 * Rails version: 7.0.1
 
-* System dependencies: bundle install and npm install to install the dependencies in Gemfile and package.json
+* System dependencies: **bundle install** and **npm install** to install the dependencies in Gemfile and package.json
 
-* Configuration
+* Configuration: postergresSql, node v12.18.4, npm v 6.14.6
 
-* Database creation
+* Database creation: rails db:migrate
 
-* Database initialization
+* Database initialization rails db:seed
 
-* How to run the test suite
+* run the app **rails s**
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* API tests can be found at '/api-docs/v1/swagger.yaml'
