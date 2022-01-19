@@ -8,9 +8,9 @@
 
 * Configuration: postergresSql, node v12.18.4, npm v 6.14.6
 
-* Database creation: rails db:migrate
+* Database creation: rails **db:migrate**
 
-* Database initialization rails db:seed
+* Database initialization rails **db:seed**
 
 * run the app **rails s**
 
